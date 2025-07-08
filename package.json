@@ -1,0 +1,39 @@
+{
+  "name": "producer_lambdatask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SAshree1313/Producer_LambdaTask.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SAshree1313/Producer_LambdaTask/issues"
+  },
+  "homepage": "https://github.com/SAshree1313/Producer_LambdaTask#readme",
+  "dependencies": {
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-typescript": "^7.27.1",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.10",
+    "babel-loader": "^10.0.0",
+    "terser-webpack-plugin": "^5.3.14",
+    "ts-loader": "^9.5.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  }
+}
