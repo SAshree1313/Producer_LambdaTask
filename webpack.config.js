@@ -20,7 +20,8 @@ module.exports = {
   output: {
     filename: "index.js",                      // Output filename
     path: path.resolve(__dirname, "dist"),     // Output directory
-    clean: true                                // Clean old files on build
+    clean: true,                               // Clean old files on build
+    libraryTarget: "commonjs2",                // Required for AWS Lambda               
   },
   externals: {
     // AWS SDK is already available in Lambda environment, exclude it from bundle

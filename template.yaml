@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Order Producer API - TypeScript + Express + Lambda + SSM
+
+Globals:
+  Function:
+    Runtime: nodejs18.x
+    MemorySize: 256
+    Timeout: 10
+    Tracing: Active
+    Environment:
+      Variables:
+        NODE_ENV: production
+        WEBHOOK_URL_PARAM: /order/service/webhookUrl
+        AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+
+Resources:
+
+  # HTTP API Gateway
+  OrderApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      Name: OrderProducerApi
+
+  # Lambda Function
+  OrderProducerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: order-producer-function
+      CodeUri: dist/
+      Handler: index.handler
+      Events:
+        PostOrder:
+          Type: HttpApi
+          Properties:
+            Path: /order-producer/v1
+            Method: POST
+            ApiId: !Ref OrderApi
+        HealthCheck:
+          Type: HttpApi
+          Properties:
+            Path: /order-producer/v1/healthCheck
+            Method: GET
+            ApiId: !Ref OrderApi
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - Statement:
+            Effect: Allow
+            Action:
+              - ssm:GetParameter
+            Resource: arn:aws:ssm:ap-southeast-2:519122485147:parameter/order/service/webhookUrl
+
+Outputs:
+  ApiEndpoint:
+    Description: "API Gateway endpoint URL"
+    Value: !GetAtt OrderApi.ApiEndpoint
