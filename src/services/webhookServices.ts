@@ -1,35 +1,3 @@
-// import axios from 'axios';
-// import logger from '../utils/logger';
-// import { TargetOrderModel } from '../models/targetOrder.model';
-
-// const WEBHOOK_URL = process.env.WEBHOOK_URL;
-
-// export async function sendToWebhook(payload: TargetOrderModel) {
-//   if (!WEBHOOK_URL) {
-//     throw new Error('WEBHOOK_URL environment variable is not defined');
-//   }
-//   try {
-//     const response = await axios.post(WEBHOOK_URL, payload, {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-
-//     logger.info('Successfully sent to webhook', {
-//       status: response.status,
-//       data: response.data,
-//     });
-//   } catch (err) {
-//     logger.error('Failed to send to webhook', {
-//       error: (err as Error).message,
-//     });
-//     throw err;
-//   }
-// }
-// src/services/webhookServices.ts
-//import { TargetOrderModel } from '../models/targetOrder.model';
-// services/webhookServices.ts
-
 // Business logic like SSM & webhook
 
 import axios from 'axios';
